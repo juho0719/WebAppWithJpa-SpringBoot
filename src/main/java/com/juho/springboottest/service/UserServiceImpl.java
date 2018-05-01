@@ -5,15 +5,15 @@ import com.juho.springboottest.model.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserServiceImpl implements UserService{
     @Autowired
     UserRepository userRepository;
 
     @Override
-    public MyUser findById(int id) {
-//        MyUser myUser = userRepository.findById(id);
-//        return myUser;
-        return new MyUser();
+    public Optional<MyUser> findById(int id) {
+        return userRepository.findById(id);
     }
 }

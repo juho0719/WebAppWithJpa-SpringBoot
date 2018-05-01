@@ -8,15 +8,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Optional;
+
 @RestController
 public class UserController {
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
-//    @RequestMapping(value="/get/no/{userNo}", method = RequestMethod.GET)
-//    public MyUser getUserForNo(@PathVariable int userNo) {
-//        MyUser user = userRepository.findById(userNo);
-//        return user;
-//    }
+    @RequestMapping(value="/get/no/{userNo}", method = RequestMethod.GET)
+    public Optional<MyUser> getUserForNo(@PathVariable int userNo) {
+        return userRepository.findById(userNo);
+    }
 }

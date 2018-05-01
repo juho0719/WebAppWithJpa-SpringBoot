@@ -2,7 +2,8 @@ package com.juho.springboottest.service;
 
 import com.juho.springboottest.model.MyUser;
 
-public interface UserService {
+import java.util.Optional;
 
-    MyUser findById(int id);
+public interface UserService {
+    Optional<MyUser> findById(int id);
 }
