@@ -6,9 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
 public class UserServiceImpl implements UserService{
+
+    private AtomicInteger curSeq = new AtomicInteger(0);
+
     @Autowired
     UserRepository userRepository;
 
@@ -20,6 +24,14 @@ public class UserServiceImpl implements UserService{
     @Override
     public Optional<MyUser> findByName(String name) {
         return userRepository.findByName(name);
+    }
+
+    @Override
+    public void createUser(String name) {
+        MyUser user = new MyUser();
+        user.setUserNo(curSeq.incrementAndGet());
+        user.setUserName(name);
+        userRepository.save(user);
     }
 
 }
