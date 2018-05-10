@@ -38,4 +38,9 @@ public class UserServiceImpl implements UserService{
     public void updateUser(String name) {
 
     }
+
+    @Override
+    public void deleteUser(String name) {
+
+    }
 }
